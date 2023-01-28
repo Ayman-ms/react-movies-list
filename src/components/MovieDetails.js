@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Col, Row } from "react-bootstrap";
 import { Link, useParams } from 'react-router-dom'
-
+import {apiKey} from '../redux/types/apiKey'
 import axios from 'axios'
-const MovieDetails = ({apiKey}) => {
+const MovieDetails = () => {
     const param = useParams();
     const [movie, setMovie] = useState([])
 

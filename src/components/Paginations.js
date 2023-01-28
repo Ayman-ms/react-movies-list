@@ -1,9 +1,21 @@
-import React from 'react'
+import React,{ useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-const Paginations = ({getpage,pageCount}) => {
-  const handlePageClick =(data)=>{      
-    console.log(data.selected+1)
-    getpage(data.selected+1)
+import {useSelector, useDispatch} from 'react-redux'
+import { getPages } from "../redux/actions/movieAction";
+
+const Paginations = () => {
+
+  const [pageCount,setPageCount]=useState(0)
+  const dispatch=useDispatch(); 
+  const pages =useSelector((state)=> state.pageCount);
+  useEffect(()=> {
+    setPageCount(pages)
+  },[])
+
+  // get CURRENT PAGE
+
+  const handlePageClick =(data)=>{ 
+    dispatch(getPages(data.selected+1))  
   }
 
   return (

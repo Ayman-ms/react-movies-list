@@ -1,10 +1,25 @@
 import React from 'react'
 import { Col, Row,Container } from 'react-bootstrap';
+import { useDispatch} from 'react-redux'
+import { getAllMovie,getSearch } from "../redux/actions/movieAction";
 import icon from './images/favicon.svg'
-const NavBar = ({search}) => {
+
+
+const NavBar = () => {
     const onsearch=(filmToSearch)=>{
         search(filmToSearch)
     }
+    const dispatch=useDispatch(); 
+      // search
+const search=async (filmToSearch)=>{
+    if (filmToSearch==='') {
+        dispatch(getAllMovie())
+    }else
+    {
+    dispatch(getSearch(filmToSearch))
+    }
+  }
+
     return (
     <div className='nav-style w-100'>
         <Container>
